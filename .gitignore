@@ -5,6 +5,7 @@
 *~
 _autosave-*
 *.tmp
+BARBIE_PCB-backups/
 
 #Local user-specific settings (Window positions, etc.)
 *-save.kicad_pcb
