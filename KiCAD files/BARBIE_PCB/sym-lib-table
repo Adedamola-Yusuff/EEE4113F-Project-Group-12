@@ -1,6 +1,4 @@
 (sym_lib_table
   (version 7)
-  (lib (name "LORA-CC68-433MHz-TCXO")(type "KiCad")(uri "${KIPRJMOD}/LORA-CC68-433MHz-TCXO.kicad_sym")(options "")(descr ""))
-  (lib (name "ATGM332D-5NR32")(type "KiCad")(uri "${KIPRJMOD}/ATGM332D-5NR32.kicad_sym")(options "")(descr ""))
-  (lib (name "ESP32-S3-WROOM-1U.pretty")(type "KiCad")(uri "${KIPRJMOD}/ESP32-S3-WROOM-1U.pretty.kicad_sym")(options "")(descr ""))
+  (lib (name "Our_Library")(type "KiCad")(uri "${KIPRJMOD}/Our_Library.kicad_sym")(options "")(descr ""))
 )

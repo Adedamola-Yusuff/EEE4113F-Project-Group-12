@@ -1,7 +1,4 @@
 (fp_lib_table
   (version 7)
-  (lib (name "BARBIE_PCB")(type "KiCad")(uri "C:/Users/hanna/OneDrive - University of Cape Town/2026/Design/Research/PCB Design/EEE4113F_Group12_PCB/KiCAD files/BARBIE_PCB.pretty")(options "")(descr ""))
-  (lib (name "LORA-CC68-433MHz-TCXO")(type "KiCad")(uri "${KIPRJMOD}/LORA-CC68-433MHz-TCXO.pretty")(options "")(descr ""))
-  (lib (name "ATGM332D-5NR32")(type "KiCad")(uri "${KIPRJMOD}/ATGM332D-5NR32.pretty")(options "")(descr ""))
-  (lib (name "ESP32-WROOM-32UE_N4")(type "KiCad")(uri "${KIPRJMOD}/ESP32-WROOM-32UE_N4.pretty")(options "")(descr ""))
+  (lib (name "Our_Footprint_Library")(type "KiCad")(uri "${KIPRJMOD}/Our_Footprint_Library.pretty")(options "")(descr ""))
 )
