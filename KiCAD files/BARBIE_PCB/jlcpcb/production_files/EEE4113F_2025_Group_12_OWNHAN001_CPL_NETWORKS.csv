@@ -1,0 +1,11 @@
+Designator,Val,Package,Mid X,Mid Y,Rotation,Layer
+J1,Conn_01x14_Pin,PinHeader_1x14_P2.54mm_Vertical,189.4,-123.33,0.0,top
+J2,Conn_01x12_Pin,PinHeader_1x12_P2.54mm_Vertical,207.53,-139.74,90.0,top
+J3,Conn_01x08_Pin,PinHeader_1x08_P2.54mm_Vertical,172.61,-139.6,90.0,top
+J4,Conn_01x14_Pin,PinSocket_1x14_P2.54mm_Vertical,225.9,-123.29,180.0,top
+J5,Conn_01x08_Pin,PinHeader_1x08_P2.54mm_Vertical,172.61,-109.4,90.0,top
+J6,Conn_01x12_Pin,PinHeader_1x12_P2.54mm_Vertical,130.9,-124.43,0.0,top
+J7,Conn_01x12_Pin,PinHeader_1x12_P2.54mm_Vertical,155.9,-124.43,0.0,top
+U1,ESP32-S3-WROOM-1U-N8,ESP32-S3-WROOM-1U_No_holes,208.285,-124.81,0.0,top
+U2,LORA-CC68-433MHz-TCXO,LORA-CC68-433MHz-TCXO,172.92,-124.5,90.0,top
+U3,ATGM332D-5N71,ATGM332D-5NR32,143.4,-124.12,0.0,top
