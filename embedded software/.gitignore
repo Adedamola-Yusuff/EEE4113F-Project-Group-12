@@ -1,0 +1,8 @@
+# compiled files
+*.exe
+
+# PlatformIO
+.pio/
+barbie_firmware/include/README
+barbie_firmware/lib/README
+barbie_firmware/test/README

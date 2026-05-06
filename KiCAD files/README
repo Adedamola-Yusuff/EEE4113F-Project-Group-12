@@ -1,12 +1,13 @@
-# EEE4113F_Group12_PCB
+# EEE4113F_Group12_PCB - KiCAD files
 ## Overview
-This repository was used for Group 12 (of the 2026 EEE4113F course from the University of Cape Town) to collaborate on the design of the project's PCB. This PCB was eventually sent to [JLCPCB](https://jlcpcb.com/) for printing.
+This PCB was eventually sent to [JLCPCB](https://jlcpcb.com/) for printing.
 
 ## What is included
 This repository includes:
 - The Project file
 - The Schematic file
 - The PCB file
+Apologies for the files being so messy.
 
 None of the generated gerber files are included.
 

@@ -1,0 +1,27 @@
+#KiCad temporary and backup files
+*.bak
+*.kicad_pcb-bak
+*.kicad_sch-bak
+*~
+_autosave-*
+*.tmp
+BARBIE_PCB-backups/
+
+#Local user-specific settings (Window positions, etc.)
+*-save.kicad_pcb
+*-save.kicad_sch
+fp-info-cache
+*.pyc
+
+#Project-specific local settings
+/kicad-vars.json
+
+#Output directories (Gerbers, Drill files, BOMs)
+[Gg]erber/
+[Oo]utput/
+[Bb]om/
+[Pp]lots/
+
+#3D Model cache and logs
+*.log
+_cache/
