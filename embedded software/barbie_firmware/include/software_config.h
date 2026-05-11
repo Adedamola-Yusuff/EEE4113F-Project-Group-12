@@ -8,7 +8,7 @@
 #define SOFTWARE_CONFIG_H
 
 // Includes
-#include <std.bool>
+#include <stdbool.h>
 
 // Data Sharing
 const bool DATA_SHARING = true; // Set to `false` to stop device from sharing data via LoRa

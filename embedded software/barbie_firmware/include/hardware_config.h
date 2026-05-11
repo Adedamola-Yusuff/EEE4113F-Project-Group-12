@@ -27,21 +27,10 @@
 // Simple I/O
 #define IO1 1 // [GPIO 1], RTC GPIO 1, touch 1, ADC 1 channel 0
 #define IO2 2 // [GPIO 2], RTC GPIO 2, touch 2, ADC 1 channel 1
-#define IO4 4 // [GPIO 4], RTC GPIO 4, touch 4, ADC 1 channel 3
-#define IO5 5 // [GPIO 5], RTC GPIO 5, touch 5, ADC 1 channel 4
 #define IO6 6 // [GPIO 6], RTC GPIO 6, touch 6, ADC 1 channel 5
 #define IO7 7 // [GPIO 7], RTC GPIO 7, touch 7, ADC 1 channel 6
-#define IO14 14 // [GPIO 14], RTC GPIO 14, touch 14, DC 2 channel 3, FSPIWP, FSPIDQS, SUBSPIWP
-#define IO15 15 // [GPIO 15], RTC GPIO 15, ADC 2 channel 4, U0RTS, XTAL 32K P
-#define IO16 16 // [GPIO 16], RTC GPIO 16, ADC 2 channel 5, U0RTS, XTAL 32K N
-#define IO17 17 // [GPIO 17], RTC GPIO 17, ADC 2 channel 6, U1TXD
-#define IO18 18 // [GPIO 18], RTC GPIO 18, ADC 2 channel 7, U1RXD, CLK out 3
-#define IO21 21 // [GPIO 21], RTC GPIO 21
-#define IO38 38 // [GPIO 38], FSPIWP, SUBSPIWP
 #define IO45 45 // [GPIO 45]
 #define IO46 46 // [GPIO 46]
-#define IO47 47 // [GPIO 47], SPICLK P Diff, SUBSPICLK P Diff
-#define IO48 48 // [GPIO 48], SPICLK N Diff, SUBSPICLK N Diff
 
 // I2C (chosen because they are the Arduino defaults)
 #define I2C_SDA 8 // [GPIO 8], RTC GPIO 8, touch 8, ADC 1 channel 7, SUBSPICS1
@@ -71,6 +60,23 @@
 // UART
 #define TXD0 43 // GPIO 43, UART TX
 #define RXD0 44 // GPIO 44, UART RX
+
+// LoRa
+#define LORA_NSS 5 // [GPIO 5], RTC GPIO 5, touch 5, ADC 1 channel 4
+#define LORA_SCK 47 // [GPIO 47], SPICLK P Diff, SUBSPICLK P Diff
+#define LORA_MOSI 48 // [GPIO 48], SPICLK N Diff, SUBSPICLK N Diff
+#define LORA_MISO 38 // [GPIO 38], FSPIWP, SUBSPIWP
+#define LORA_NRESET 14 // [GPIO 14], RTC GPIO 14, touch 14, DC 2 channel 3, FSPIWP, FSPIDQS, SUBSPIWP
+#define LORA_BUSY 16 // [GPIO 16], RTC GPIO 16, ADC 2 channel 5, U0RTS, XTAL 32K N
+#define LORA_DIO1 15 // [GPIO 15], RTC GPIO 15, ADC 2 channel 4, U0RTS, XTAL 32K P
+
+// GPS
+#define GPS_TXD 17 // [GPIO 17], RTC GPIO 17, ADC 2 channel 6, U1TXD
+#define GPS_RXD 18 // [GPIO 18], RTC GPIO 18, ADC 2 channel 7, U1RXD, CLK out 3
+
+// Satellite
+#define SAT_TXD 4 // [GPIO 4], RTC GPIO 4, touch 4, ADC 1 channel 3
+#define SAT_RXD 21 // [GPIO 21], RTC GPIO 21
 
 // ================================
 

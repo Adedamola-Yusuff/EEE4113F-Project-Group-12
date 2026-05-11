@@ -8,8 +8,8 @@
 #define NETWORKING_H
 
 // Includes
-#include <std.bool>
-#include <std.int>
+#include <stdbool.h>
+#include <stdint.h>
 
 // PROTOCOL CONFIGURATIONS ================================
 
