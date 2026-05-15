@@ -29,8 +29,11 @@
 #define IO2 2 // [GPIO 2], RTC GPIO 2, touch 2, ADC 1 channel 1
 #define IO6 6 // [GPIO 6], RTC GPIO 6, touch 6, ADC 1 channel 5
 #define IO7 7 // [GPIO 7], RTC GPIO 7, touch 7, ADC 1 channel 6
+#define IO38 38 // [GPIO 38], FSPIWP, SUBSPIWP
 #define IO45 45 // [GPIO 45]
 #define IO46 46 // [GPIO 46]
+#define IO47 47 // [GPIO 47], SPICLK P Diff, SUBSPICLK P Diff
+#define IO48 48 // [GPIO 48], SPICLK N Diff, SUBSPICLK N Diff
 
 // I2C (chosen because they are the Arduino defaults)
 #define I2C_SDA 8 // [GPIO 8], RTC GPIO 8, touch 8, ADC 1 channel 7, SUBSPICS1
@@ -38,9 +41,9 @@
 
 // SPI (chosen because they are the Arduino defaults)
 #define CS_SD_CARD 10 // [GPIO 10], RTC GPIO, touch 10, ADC 1 channel 9, FSPICS0, FSPIIO4, SUBSPICS0
-#define SPI_MOSI 11 // [GPIO 11], RTC GPIO 11, touch 11, ADC 2 channel 0, FSPID, FSPIIO5, SUBSPID
-#define SPI_SCK 12 // [GPIO 12], RTC GPIO 12, touch 12, ADC 2 channel 1, FSPICLK, FSPIIO6, SUBSPICLK
-#define SPI_MISO 13 // [GPIO 13], RTC GPIO 13, touch 13, ADC 2 channel 2, FSPIQ, FSPIIO7, SUBSPIQ
+#define LORA_MOSI 11 // [GPIO 11], RTC GPIO 11, touch 11, ADC 2 channel 0, FSPID, FSPIIO5, SUBSPID
+#define LORA_SCK 12 // [GPIO 12], RTC GPIO 12, touch 12, ADC 2 channel 1, FSPICLK, FSPIIO6, SUBSPICLK
+#define LORA_MISO 13 // [GPIO 13], RTC GPIO 13, touch 13, ADC 2 channel 2, FSPIQ, FSPIIO7, SUBSPIQ
 
 // USB
 #define USB_DP 19 // GPIO 19, RTC GPIO 19, ADC 2 channel 8, [USB D-], U1RTS, CLK out 2
@@ -63,9 +66,6 @@
 
 // LoRa
 #define LORA_NSS 5 // [GPIO 5], RTC GPIO 5, touch 5, ADC 1 channel 4
-#define LORA_SCK 47 // [GPIO 47], SPICLK P Diff, SUBSPICLK P Diff
-#define LORA_MOSI 48 // [GPIO 48], SPICLK N Diff, SUBSPICLK N Diff
-#define LORA_MISO 38 // [GPIO 38], FSPIWP, SUBSPIWP
 #define LORA_NRESET 14 // [GPIO 14], RTC GPIO 14, touch 14, DC 2 channel 3, FSPIWP, FSPIDQS, SUBSPIWP
 #define LORA_BUSY 16 // [GPIO 16], RTC GPIO 16, ADC 2 channel 5, U0RTS, XTAL 32K N
 #define LORA_DIO1 15 // [GPIO 15], RTC GPIO 15, ADC 2 channel 4, U0RTS, XTAL 32K P

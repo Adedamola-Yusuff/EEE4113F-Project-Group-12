@@ -37,11 +37,13 @@
 #include "freertos/event_groups.h"
 #include "freertos/task.h"
 
+/*
 #include "lora_task.h"
 #include "power.h"
 #include "satellite_task.h"
 #include "sensor_task.h"
 #include "wifi_dump_task.h"
+*/
 
 /* ── Logging tag ─────────────────────────────────────────────────────────── */
 static const char *TAG = "init";
@@ -381,7 +383,7 @@ esp_err_t buoy_initialize(void)
      *    event-group bit), so they add zero active CPU overhead until needed.
      */
     BaseType_t task_ret;
-
+/* 
     task_ret = xTaskCreate(sensor_task, "sensor",
                            2048, NULL, 3, &g_sensor_task_handle);
     if (task_ret != pdPASS) { ESP_LOGE(TAG, "sensor_task create failed"); return ESP_ERR_NO_MEM; }
@@ -399,7 +401,7 @@ esp_err_t buoy_initialize(void)
     if (task_ret != pdPASS) { ESP_LOGE(TAG, "wifi_dump_task create failed"); return ESP_ERR_NO_MEM; }
 
     ESP_LOGI(TAG, "Application tasks: created (all blocked)");
-
+*/
     /* 7. Light sleep */
     ret = configure_light_sleep();
     ESP_ERROR_CHECK_WITHOUT_ABORT(ret);
