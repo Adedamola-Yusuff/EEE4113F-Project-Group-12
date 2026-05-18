@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Buoy Control UI</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #101820;
+      color: white;
+      padding: 30px;
+    }
+
+    .card {
+      background: #1f2a35;
+      padding: 24px;
+      border-radius: 14px;
+      max-width: 600px;
+      margin: auto;
+    }
+
+    button {
+      padding: 12px 18px;
+      margin: 8px 6px 8px 0;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 15px;
+    }
+
+    #status {
+      margin-top: 20px;
+      padding: 14px;
+      background: #0d1117;
+      border-radius: 8px;
+      min-height: 45px;
+    }
+
+    pre {
+      background: #0d1117;
+      padding: 14px;
+      border-radius: 8px;
+      overflow-x: auto;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="card">
+    <h1>Buoy Node Control</h1>
+
+    <button onclick="connectSerial()">Connect to Node A</button>
+    <button onclick="requestWifi()">Request WiFi</button>
+    <button onclick="startDataTransfer()">Start Data Transfer</button>
+
+    <div id="status">Status: Not connected</div>
+
+    <h3>Received Data</h3>
+    <pre id="dataOutput">No data yet.</pre>
+  </div>
+
+  <script>
+    let port;
+    let writer;
+    let reader;
+
+    function updateStatus(message) {
+      document.getElementById("status").innerText = "Status: " + message;
+    }
+
+    async function connectSerial() {
+      try {
+        port = await navigator.serial.requestPort();
+        await port.open({ baudRate: 115200 });
+
+        writer = port.writable.getWriter();
+
+        updateStatus("Connected to Node A. Waiting for messages...");
+
+        readSerial();
+
+      } catch (error) {
+        updateStatus("Serial connection failed: " + error);
+      }
+    }
+
+    async function readSerial() {
+      const decoder = new TextDecoderStream();
+      port.readable.pipeTo(decoder.writable);
+      reader = decoder.readable.getReader();
+
+      while (true) {
+        const { value, done } = await reader.read();
+
+        if (done) {
+          break;
+        }
+
+        if (value) {
+          console.log(value);
+
+          if (value.includes("STATUS:LORA_INIT_SUCCESS")) {
+            updateStatus("Node A LoRa initialized.");
+          }
+
+          if (value.includes("STATUS:SENDING:WIFI_ON_REQUEST")) {
+            updateStatus("Sending WiFi request to Node B over LoRa...");
+          }
+
+          if (value.includes("STATUS:WIFI_ON_ACK")) {
+            updateStatus("Node B acknowledged WiFi request.");
+          }
+
+          if (value.includes("STATUS:WIFI_READY")) {
+            updateStatus("Node B WiFi is ready. Connect laptop to Buoy_Node_B.");
+          }
+
+          if (value.includes("STATUS:ACK_TIMEOUT")) {
+            updateStatus("No ACK received from Node B.");
+          }
+
+          if (value.includes("STATUS:WIFI_READY_TIMEOUT")) {
+            updateStatus("Node B did not report WiFi ready.");
+          }
+        }
+      }
+    }
+
+    async function requestWifi() {
+      if (!writer) {
+        updateStatus("Please connect to Node A first.");
+        return;
+      }
+
+      updateStatus("Requesting WiFi from Node B...");
+
+      const command = "wifi_on\n";
+      const data = new TextEncoder().encode(command);
+
+      await writer.write(data);
+    }
+
+    async function startDataTransfer() {
+      updateStatus("Requesting data from Node B over WiFi...");
+
+      try {
+        const response = await fetch("http://192.168.4.1/data");
+        const data = await response.json();
+
+        document.getElementById("dataOutput").innerText =
+          JSON.stringify(data, null, 2);
+
+        updateStatus("Data transfer complete.");
+
+      } catch (error) {
+        updateStatus("Data transfer failed. Are you connected to Buoy_Node_B WiFi?");
+      }
+    }
+  </script>
+</body>
+</html>

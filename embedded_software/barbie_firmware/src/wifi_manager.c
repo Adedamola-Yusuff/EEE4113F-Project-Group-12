@@ -1,4 +1,5 @@
 #include "wifi_manager.h"
+#include "gps_manager.h"
 
 #include <stdio.h>
 #include <string.h>
@@ -21,6 +22,8 @@
 
 static bool wifi_initialized = false;
 
+static bool wifi_active = false;
+
 //---------------STATIC FUNCTIONS---------------
 
 static esp_err_t root_handler(httpd_req_t *req)
@@ -38,7 +41,7 @@ static esp_err_t data_handler(httpd_req_t *req)
     httpd_resp_set_hdr(req, "Access-Control-Allow-Origin", "*");
     httpd_resp_set_hdr(req, "Content-Disposition", "attachment; filename=node_b_data.bin");
 
-    const int total_size = 1024 * 1024; // 1 MB
+    const int total_size = 20 * 1024 * 1024; // 20 MB
     const int chunk_size = 1024;
     uint8_t buffer[1024];
 
@@ -84,12 +87,44 @@ static esp_err_t wifi_off_handler(httpd_req_t *req)
     return ESP_OK;
 }
 
+static esp_err_t location_handler(httpd_req_t *req)
+{
+    printf("WiFi LOCATION_REQUEST received.\n");
+
+    gps_update_location();
+
+    const char *location = gps_get_location_string();
+
+    char response[128];
+
+    snprintf(
+        response,
+        sizeof(response),
+        "{ \"node\": \"B\", \"location\": \"%s\" }",
+        location
+    );
+
+    httpd_resp_set_type(req, "application/json");
+    httpd_resp_set_hdr(req, "Access-Control-Allow-Origin", "*");
+    httpd_resp_send(req, response, HTTPD_RESP_USE_STRLEN);
+
+    printf("Location sent over WiFi: %s\n", location);
+
+    return ESP_OK;
+}
+
 //==================================================
 //WIFI START AND STOP FUNCTIONS
 //==================================================
 
 bool wifi_start_ap(void)
-{
+{   
+    if(wifi_active)
+    {
+        printf("WiFi AP already active.\n");
+        return true;
+    }
+
     printf("Starting WiFi AP...\n");
 
     if(!wifi_initialized)
@@ -133,6 +168,8 @@ bool wifi_start_ap(void)
     esp_wifi_set_config(WIFI_IF_AP, &wifi_config);
     esp_wifi_start();
 
+    wifi_active = true;
+
     printf("WiFi AP started.\n");
     printf("SSID: %s\n", WIFI_AP_SSID);
     printf("Password: %s\n", WIFI_AP_PASSWORD);
@@ -145,6 +182,8 @@ bool wifi_stop_ap(void)
     printf("Stopping WiFi AP...\n");
 
     esp_wifi_stop();
+
+    wifi_active = false;
 
     printf("WiFi AP stopped.\n");
 
@@ -188,13 +227,22 @@ bool wifi_start_web_server(void)
 
     httpd_register_uri_handler(server, &data_uri);
 
+    httpd_uri_t location_uri = {
+        .uri = "/location",
+        .method = HTTP_GET,
+        .handler = location_handler,
+        .user_ctx = NULL
+    };
+
+    httpd_register_uri_handler(server, &location_uri);
+
     httpd_uri_t wifi_off_uri = {
         .uri = "/wifi_off",
         .method = HTTP_GET,
         .handler = wifi_off_handler,
         .user_ctx = NULL
     };
-
+    
     httpd_register_uri_handler(server, &wifi_off_uri);
 
     printf("Web server started.\n");

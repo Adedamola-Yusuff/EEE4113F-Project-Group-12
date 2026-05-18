@@ -70,6 +70,7 @@ bool receiveLoRa(uint8_t *data, uint8_t *length);
  */
 bool isWifiOnRequest(uint8_t *data);
 
+bool isGpsUpdateRequest(uint8_t *data);
 //==================================================
 //TEST FUNCTIONS
 //==================================================

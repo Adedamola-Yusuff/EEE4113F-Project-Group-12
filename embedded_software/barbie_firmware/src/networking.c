@@ -1018,3 +1018,16 @@ bool isWifiOnRequest(uint8_t *data)
 
     return false;
 }
+
+bool isGpsUpdateRequest(uint8_t *data)
+{
+    char *message = (char *)data;
+
+    if(strstr(message, "TO=B") != NULL &&
+       strstr(message, "CMD=GPS_UPDATE_REQUEST") != NULL)
+    {
+        return true;
+    }
+
+    return false;
+}
