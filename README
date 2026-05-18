@@ -8,3 +8,7 @@ Research and<br>
 Basic<br>
 Information<br>
 Exchange
+
+HTML file contains the UI for the B.A.R.B.I.E called T.E.A.
+KiCAD files contains the pcb designs
+embedded_software contains the various functions used to communicate using LoRa and WiFi, receive GPS locations, and manage data processing
