@@ -24,20 +24,19 @@
 #define IO0 0 // [GPIO 0], RTC GPIO 0, firmware download
 #define IO3 3 // [GPIO 3], RTC GPIO 3, touch 3, ADC 1 channel 2, JTAG behaviour
 
-// Simple I/O
-#define IO1 1 // [GPIO 1], RTC GPIO 1, touch 1, ADC 1 channel 0
-#define IO2 2 // [GPIO 2], RTC GPIO 2, touch 2, ADC 1 channel 1
-#define IO6 6 // [GPIO 6], RTC GPIO 6, touch 6, ADC 1 channel 5
-#define IO7 7 // [GPIO 7], RTC GPIO 7, touch 7, ADC 1 channel 6
-#define IO38 38 // [GPIO 38], FSPIWP, SUBSPIWP
-#define IO45 45 // [GPIO 45]
-#define IO46 46 // [GPIO 46]
-#define IO47 47 // [GPIO 47], SPICLK P Diff, SUBSPICLK P Diff
-#define IO48 48 // [GPIO 48], SPICLK N Diff, SUBSPICLK N Diff
+// Configuration pins
+#define PIN_ID_0 1 // [GPIO 1], RTC GPIO 1, touch 1, ADC 1 channel 0
+#define PIN_ID_1 2 // [GPIO 2], RTC GPIO 2, touch 2, ADC 1 channel 1
+#define PIN_ID_2 6 // [GPIO 6], RTC GPIO 6, touch 6, ADC 1 channel 5
+#define PIN_SHARE_DATA 7 // [GPIO 7], RTC GPIO 7, touch 7, ADC 1 channel 6
+
+// Low battery
+#define PIN_LOW_BATTERY 45 // [GPIO 45]
 
 // I2C (chosen because they are the Arduino defaults)
-#define I2C_SDA 8 // [GPIO 8], RTC GPIO 8, touch 8, ADC 1 channel 7, SUBSPICS1
-#define I2C_SCL 9 // [GPIO 9], RTC GPIO 9, touch 9, ADC 1 channel 8, FSPIHD, SUBSPIHD
+#define PIN_I2C_SDA 46 // [GPIO 46]
+#define PIN_I2C_SCL 9 // [GPIO 9], RTC GPIO 9, touch 9, ADC 1 channel 8, FSPIHD, SUBSPIHD
+#define PIN_SENSOR_DATA_READY 8 // [GPIO 8], RTC GPIO 8, touch 8, ADC 1 channel 7, SUBSPICS1
 
 // SPI (chosen because they are the Arduino defaults)
 #define CS_SD_CARD 10 // [GPIO 10], RTC GPIO, touch 10, ADC 1 channel 9, FSPICS0, FSPIIO4, SUBSPICS0

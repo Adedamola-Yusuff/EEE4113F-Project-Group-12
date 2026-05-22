@@ -1,14 +1,16 @@
 # EEE4113F_Group12_PCB - embedded software
 ## Overview
-[TODO]
+This directory contains the software for developing an embedded-program for the BARBIE.
 
 ## What is included
 This repository includes:
 - Simulation files
 - Firmware
-- Configuration header
+- Configuration headers
 
 None of the generated compilation files are included.
 
 ## Installation & Dependencies
-[TODO]
+The simulation uses Python 3.13.
+
+The firmware uses the ESP-IDF framework, flashed onto the ESP32 with the PlatformIO workflow and the ESP32's USB-JTAG interface.
